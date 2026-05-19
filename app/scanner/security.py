@@ -26,7 +26,7 @@ def sanitize_input(raw: str) -> str:
     return cleaned
 
 def validate_input(input_sanitized: str) -> str:
-    parsed_input = urlsplit(input_sanitized)
+    parsed_input = urlsplit(input_sanitized if "://" in input_sanitized else f"//{input_sanitized}")
 
     if parsed_input.username or parsed_input.password:
         raise ValueError("Username or password in domain not allowed")
@@ -44,11 +44,15 @@ def validate_input(input_sanitized: str) -> str:
     if domain == "localhost":
         raise ValueError("localhost is not allowed")
 
+    if "." not in domain or len(domain) > 253 or not re.fullmatch(r"(?!-)[a-z0-9-]{1,63}(?<!-)(\.(?!-)[a-z0-9-]{1,63}(?<!-))*", domain):
+        raise ValueError("Invalid domain")
+
     try:
         ip = ipaddress.ip_address(domain)
-        raise ValueError("IP Address as input not allowed")
     except ValueError:
         pass
+    else: 
+        raise ValueError("IP Address as input not allowed")
         
     return domain
 
@@ -86,6 +90,9 @@ def resolve_validate_domain(domain: str) -> set:
 
         if current_ip.is_unspecified:
             raise ValueError("unspecified IP address not allowed")
+
+        if not current_ip.is_global:
+            raise ValueError("non-public IP address not allowed")
     
     return ips
 

@@ -10,6 +10,7 @@ class Scan(Base):
     input_sanitized = Column(String, nullable=False)
     status = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    warning = Column(String, nullable=True)
     score = Column(Integer, nullable=True)
     result_json = Column(Text, nullable=True)
 
