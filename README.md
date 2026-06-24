@@ -1,5 +1,5 @@
 ﻿# Domain Security Scanner
 
-Minimales FastAPI-Backend für Security-Scanning-API.
+Minimal Fast API backend for security scanning of urls. Using abuseipdb under the hood.
 
 
