@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.config import CORS_ORIGINS
-from app.api import routes_health, routes_scan
-from app.db.session import engine, Base
-from app.db import models
+from app.config import CORS_ORIGINS
+from app import routes_scan
+from app import routes_health
 
-Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
 
@@ -16,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+print("Server running. Listening on port 8000")
 
 app.include_router(routes_health.router, prefix="/api", tags=["health"])
 app.include_router(routes_scan.router, prefix="/api", tags=["scan"])

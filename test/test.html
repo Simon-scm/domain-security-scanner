@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Domain Scanner</title>
+</head>
+<body>
+  <h1>Domain Scanner</h1>
+
+  <form action="http://localhost:8000/api/scan" method="post">
+    <label for="url">URL:</label>
+    <input
+      id="url"
+      name="url"
+      type="url"
+      placeholder="https://example.com"
+      required
+    >
+
+    <button type="submit">Scan starten</button>
+  </form>
+</body>
+</html>

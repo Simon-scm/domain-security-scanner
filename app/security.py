@@ -10,7 +10,6 @@ def sanitize_input(raw: str) -> str:
     if not raw:
         return ""
 
-    # Trim and lowercase
     cleaned = raw.strip().lower()
 
     # Remove control characters (ASCII < 32 and DEL)
@@ -21,7 +20,7 @@ def sanitize_input(raw: str) -> str:
 
     # Enforce max length
     if len(cleaned) > MAX_INPUT_LENGTH:
-        cleaned = cleaned[:MAX_INPUT_LENGTH]
+        raise ValueError("URL too long to be processed")
 
     return cleaned
 
@@ -38,6 +37,7 @@ def validate_input(input_sanitized: str) -> str:
         raise ValueError("only http and https scheme allowed")
 
     domain = parsed_input.hostname
+
     if not domain:
         raise ValueError("Invalid domain")
     
@@ -57,7 +57,8 @@ def validate_input(input_sanitized: str) -> str:
     return domain
 
 
-def resolve_validate_domain(domain: str) -> set:
+
+def resolve_domain(domain: str) -> set:
 
     try:
         sock = socket.getaddrinfo(domain, None, proto=socket.IPPROTO_TCP)
@@ -94,6 +95,6 @@ def resolve_validate_domain(domain: str) -> set:
         if not current_ip.is_global:
             raise ValueError("non-public IP address not allowed")
     
-    return ips
+    return list(ips)
 
 
