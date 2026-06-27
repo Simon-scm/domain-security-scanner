@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dungeon Result</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="screen result-screen">
+    <section class="game-card result-card">
+      <header class="game-header">
+        <p class="kicker">Encounter Found</p>
+        <h1>Domain Battle</h1>
+      </header>
+
+      <div class="pixel-divider"></div>
+
+      <div class="boss-card">
+        <span class="mini-label">Target</span>
+        <strong>{{ encounter }}</strong>
+      </div>
+
+      <div class="boss-card">
+        <span class="mini-label">Enemy Type</span>
+        <strong>{{ enemy_type }}</strong>
+      </div>
+
+      <div class="threat-box">
+        <span class="mini-label">Threat Level</span>
+        <strong>{{ threat_level }}</strong>
+      </div>
+
+      <div class="result-message">
+        <span class="mini-label">Battle Result</span>
+        <p>{{ battle_result }}</p>
+      </div>
+
+      <a class="button-link" href="/">New Quest</a>
+    </section>
+
+    <section class="side-card result-side">
+      <div class="mini-panel">
+        <span class="mini-label">Loot</span>
+        <ul class="loot-list">
+          {{ loot }}
+        </ul>
+      </div>
+
+      <div class="mini-panel">
+        <span class="mini-label">Next Action</span>
+        <p>{{ next_action }}</p>
+      </div>
+
+      <details class="json-scroll">
+        <summary>Raw Scroll</summary>
+        <pre>{{ ai_json }}</pre>
+      </details>
+    </section>
+  </main>
+</body>
+</html>

@@ -7,3 +7,5 @@ CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./data/scanner.db")
 
 ABUSEIPDB_API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

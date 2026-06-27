@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domain Dungeon</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="screen">
+    <section class="game-card start-card">
+      <header class="game-header">
+        <p class="kicker">Quest Terminal</p>
+        <h1>Domain Dungeon</h1>
+      </header>
+
+      <div class="pixel-divider"></div>
+
+      <form class="scan-form" action="/api/scan" method="post">
+        <label for="url">Target</label>
+
+        <input
+          id="url"
+          name="url"
+          type="text"
+          placeholder="example.com"
+          required
+        />
+
+        <button type="submit">Begin Scan</button>
+      </form>
+
+      <div class="mini-status">
+        <span>AbuseIPDB</span>
+        <span>IP Reputation</span>
+      </div>
+    </section>
+
+    <section class="side-card">
+      <div class="mini-panel">
+        <span class="mini-label">Step 1</span>
+        <strong>Resolve Domain</strong>
+      </div>
+
+      <div class="mini-panel">
+        <span class="mini-label">Step 2</span>
+        <strong>Check IPs</strong>
+      </div>
+
+      <div class="mini-panel">
+        <span class="mini-label">Step 3</span>
+        <strong>Enter Encounter</strong>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
