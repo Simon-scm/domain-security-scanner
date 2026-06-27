@@ -1,21 +1,5 @@
-﻿# Domain Security Scanner - Backend
+﻿# Domain Security Scanner
 
-Minimales FastAPI-Backend für Security-Scanning-API.
+Minimal Fast API backend for security scanning of urls. Using abuseipdb under the hood.
 
-## Setup
 
-```bash
-uv sync
-```
-
-## Entwicklung
-
-```bash
-uv run uvicorn app.main:app --reload
-```
-
-## Umgebungsvariablen
-
-- `CORS_ORIGINS`: Komma-separierte Liste von erlaubten Origins (Standard: `http://localhost:3000`)
-
-- `DATABASE_URL`: SQLite Datenbank-URL (Standard: `sqlite:///./data/scanner.db`)
